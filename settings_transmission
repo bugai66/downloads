@@ -48,7 +48,7 @@
     "rpc-enabled": true,
     "rpc-host-whitelist": "",
     "rpc-host-whitelist-enabled": true,
-    "rpc-password": "root",
+    "rpc-password": "{b24af7d3916552f1e401f1263e8a43002609b83f/Rt4s9dt",
     "rpc-port": 9092,
     "rpc-url": "/transmission/",
     "rpc-username": "root",
@@ -70,6 +70,5 @@
     "upload-limit-enabled": 0,
     "upload-slots-per-torrent": 14,
     "utp-enabled": false,
-    "watch-dir": "/home/sergey/data/torrents",
-    "watch-dir-enable: true"
+    "watch-dir": "/home/sergey/data/torrents"
 }
