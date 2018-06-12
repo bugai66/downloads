@@ -3,10 +3,9 @@ sudo service transmission-daemon stop &&
 sudo cp -r /etc/transmission-daemon /home/sergey/.config/ && 
 sudo chown -R sergey /home/sergey/.config/transmission-daemon && 
 
-mkdir data && mkdir data/download && mkdir data/torrents && mkdir data/incomplete
+mkdir data && mkdir data/download && mkdir data/torrents && mkdir data/incomplete  && 
 
-wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission
-
+wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission  && 
 
 sudo gedit /etc/default/transmission-daemon && 
 sudo gedit /etc/init.d/transmission-daemon && 
