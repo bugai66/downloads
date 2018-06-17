@@ -1,3 +1,28 @@
+sudo apt-get install transmission-daemon -y && 
+sudo service transmission-daemon stop && 
+sudo cp -r /etc/transmission-daemon /home/$USER/.config/ && 
+sudo chown -R $USER /home/$USER/.config/transmission-daemon && 
+
+mkdir data && mkdir data/download && mkdir data/torrents && mkdir data/incomplete  && 
+
+wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission  && 
+
+sudo gedit /etc/default/transmission-daemon && 
+sudo gedit /etc/init.d/transmission-daemon && 
+sudo gedit /etc/systemd/system/multi-user.target.wants/transmission-daemon.service && 
+sudo systemctl daemon-reload
+
+sudo apt-get install transmission-daemon -y && sudo service transmission-daemon stop && sudo cp -r /etc/transmission-daemon /home/$USER/.config/ && sudo chown -R $USER /home/$USER/.config/transmission-daemon && mkdir data && mkdir data/download && mkdir data/torrents && mkdir data/incomplete  && wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission  && sudo gedit /etc/default/transmission-daemon && sudo gedit /etc/init.d/transmission-daemon && sudo gedit /etc/systemd/system/multi-user.target.wants/transmission-daemon.service && sudo systemctl daemon-reload
+
+
+
+
+
+
+
+
+
+
 sudo apt install ssh -y && 
 sudo apt install transmission-daemon -y && 
 sudo service transmission-daemon stop && 
