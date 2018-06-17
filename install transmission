@@ -8,15 +8,14 @@ sudo mkdir data && sudo mkdir data/download && sudo mkdir data/torrents && sudo 
 wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission  && 
 
 sudo sed -i "s/ENABLE_DAEMON=1/ENABLE_DAEMON=0/" /etc/default/transmission-daemon && 
-sudo sed -i "s/CONFIG_DIR=\"/var/lib/transmission-daemon/info\"/CONFIG_DIR=\"/home/$USER/.config/transmission-daemon\"/" /etc/default/transmission-daemon && 
+sudo sed -i "s/CONFIG_DIR=\"\/var\/lib\/transmission-daemon\/info\"/CONFIG_DIR=\"\/home\/$USER\/\.config\/transmission-daemon\"/" /etc/default/transmission-daemon && 
 sudo sed -i "s/NAME=transmission-daemon/NAME=$USER/" /etc/init.d/transmission-daemon && 
 sudo sed -i "s/USER=debian-transmission/USER=$USER/" /etc/init.d/transmission-daemon && 
 sudo sed -i "s/User=debian-transmission/User=$USER/" /etc/systemd/system/multi-user.target.wants/transmission-daemon.service && 
 sudo systemctl daemon-reload
 
 
-sudo apt-get install transmission-daemon -y && sudo service transmission-daemon stop && sudo cp -r /etc/transmission-daemon /home/$USER/.config/ && sudo chown -R $USER /home/$USER/.config/transmission-daemon && sudo mkdir data && sudo mkdir data/download && sudo mkdir data/torrents && sudo mkdir data/incomplete  && wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission  && sudo sed -i "s/ENABLE_DAEMON=1/ENABLE_DAEMON=0/" /etc/default/transmission-daemon && sudo sed -i "s/CONFIG_DIR=\"/var/lib/transmission-daemon/info\"/CONFIG_DIR=\"/home/$USER/.config/transmission-daemon\"/" /etc/default/transmission-daemon && sudo sed -i "s/NAME=transmission-daemon/NAME=$USER/" /etc/init.d/transmission-daemon && sudo sed -i "s/USER=debian-transmission/USER=$USER/" /etc/init.d/transmission-daemon && sudo sed -i "s/User=debian-transmission/User=$USER/" /etc/systemd/system/multi-user.target.wants/transmission-daemon.service && sudo systemctl daemon-reload
-
+sudo apt-get install transmission-daemon -y && sudo service transmission-daemon stop && sudo cp -r /etc/transmission-daemon /home/$USER/.config/ && sudo chown -R $USER /home/$USER/.config/transmission-daemon && sudo mkdir data && sudo mkdir data/download && sudo mkdir data/torrents && sudo mkdir data/incomplete  && wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission  && sudo sed -i "s/ENABLE_DAEMON=1/ENABLE_DAEMON=0/" /etc/default/transmission-daemon && sudo sed -i "s/CONFIG_DIR=\"\/var\/lib\/transmission-daemon\/info\"/CONFIG_DIR=\"\/home\/$USER\/\.config\/transmission-daemon\"/" /etc/default/transmission-daemon && sudo sed -i "s/NAME=transmission-daemon/NAME=$USER/" /etc/init.d/transmission-daemon && sudo sed -i "s/USER=debian-transmission/USER=$USER/" /etc/init.d/transmission-daemon && sudo sed -i "s/User=debian-transmission/User=$USER/" /etc/systemd/system/multi-user.target.wants/transmission-daemon.service && sudo systemctl daemon-reload
 sudo gedit /etc/default/transmission-daemon && 
 sudo gedit /etc/init.d/transmission-daemon && 
 sudo gedit /etc/systemd/system/multi-user.target.wants/transmission-daemon.service && 
