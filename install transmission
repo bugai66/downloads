@@ -1,7 +1,7 @@
 sudo apt-get install transmission-daemon -y && 
 sudo service transmission-daemon stop && 
-sudo cp -r /etc/transmission-daemon /home/sergey/.config/ && 
-sudo chown -R sergey /home/sergey/.config/transmission-daemon && 
+sudo cp -r /etc/transmission-daemon /home/$USER/.config/ && 
+sudo chown -R $USER /home/$USER/.config/transmission-daemon && 
 
 mkdir data && mkdir data/download && mkdir data/torrents && mkdir data/incomplete  && 
 
@@ -14,13 +14,14 @@ sudo gedit /etc/systemd/system/multi-user.target.wants/transmission-daemon.servi
 sudo systemctl daemon-reload
 
 
-sudo apt-get install transmission-daemon -y && sudo service transmission-daemon stop && sudo cp -r /etc/transmission-daemon /home/sergey/.config/ && sudo chown -R sergey /home/sergey/.config/transmission-daemon && mkdir data && mkdir data/download && mkdir data/torrents && mkdir data/incomplete  && wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission  && sudo gedit /etc/default/transmission-daemon && sudo gedit /etc/init.d/transmission-daemon && sudo gedit /etc/systemd/system/multi-user.target.wants/transmission-daemon.service && sudo systemctl daemon-reload
+sudo apt-get install transmission-daemon -y && sudo service transmission-daemon stop && sudo cp -r /etc/transmission-daemon /home/$USER/.config/ && sudo chown -R $USER /home/$USER/.config/transmission-daemon && mkdir data && mkdir data/download && mkdir data/torrents && mkdir data/incomplete  && wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission  && sudo gedit /etc/default/transmission-daemon && sudo gedit /etc/init.d/transmission-daemon && sudo gedit /etc/systemd/system/multi-user.target.wants/transmission-daemon.service && sudo systemctl daemon-reload
 
 
 
 
-
-CONFIG_DIR="/home/sergey/.config/transmission-daemon"
-sergey
+CONFIG_DIR="/home/$USER/.config/transmission-daemon"
+$USER
 sudo service transmission-daemon start
 sudo service transmission-daemon stop
+
+sed -i "s/sudo apt-get install transmission-daemon -y && /на кого менять$USER/" /home/sergey/Документы/qwe
