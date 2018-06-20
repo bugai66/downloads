@@ -22,7 +22,7 @@
     "idle-seeding-limit-enabled": false,
     "incomplete-dir": "/home/data/incomplete",
     "incomplete-dir-enabled": true,
-    "lpd-enabled": false,
+    "lpd-enabled": true,
     "max-peers-global": 50,
     "message-level": 1,
     "peer-congestion-algorithm": "",
