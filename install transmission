@@ -20,7 +20,6 @@ sudo apt-get install transmission-daemon -y && sudo service transmission-daemon 
 >>>>>ROOT
 apt install transmission-daemon -y && service transmission-daemon stop && mkdir /home/data && mkdir /home/data/download && mkdir /home/data/torrents && mkdir /home/data/incomplete && wget -O /etc/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission
 systemctl disable transmission-daemon.service
-apt install transmission-remote-cli
-transmission-remote-cli --create-config
+apt install transmission-remote-cli -y && transmission-remote-cli --create-config
 
 apt install php-{fpm,mbstring,mcrypt,mysql,zip,curl} -y
