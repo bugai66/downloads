@@ -3,7 +3,7 @@ sudo service transmission-daemon stop &&
 sudo cp -r /etc/transmission-daemon /home/$USER/.config/ && 
 sudo chown -R $USER /home/$USER/.config/transmission-daemon && 
 
-mkdir data && mkdir data/download && mkdir data/torrents && mkdir data/incomplete  && 
+mkdir -m 777 data && mkdir -m 777 data/download && mkdir -m 777 data/torrents && mkdir -m 777 data/incomplete  && 
 
 wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission  && 
 
@@ -14,8 +14,7 @@ sudo systemctl daemon-reload
 
 
 >>>>>
-sudo apt-get install transmission-daemon -y && sudo service transmission-daemon stop && sudo cp -r /etc/transmission-daemon /home/$USER/.config/ && sudo chown -R $USER /home/$USER/.config/transmission-daemon && mkdir data && mkdir data/download && mkdir data/torrents && mkdir data/incomplete  && wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission  && sudo mcedit /etc/default/transmission-daemon && sudo mcedit /etc/init.d/transmission-daemon && sudo mcedit /etc/systemd/system/multi-user.target.wants/transmission-daemon.service && sudo systemctl daemon-reload
-
+sudo apt-get install transmission-daemon -y && sudo service transmission-daemon stop && sudo cp -r /etc/transmission-daemon /home/$USER/.config/ && sudo chown -R $USER /home/$USER/.config/transmission-daemon && mkdir -m 777 data && mkdir -m 777 data/download && mkdir -m 777 data/torrents && mkdir -m 777 data/incomplete  && wget -O ~/.config/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission  && sudo mcedit /etc/default/transmission-daemon && sudo mcedit /etc/init.d/transmission-daemon && sudo mcedit /etc/systemd/system/multi-user.target.wants/transmission-daemon.service && sudo systemctl daemon-reload
 
 >>>>>ROOT
 apt install transmission-daemon -y && service transmission-daemon stop && mkdir /home/data && mkdir /home/data/download && mkdir /home/data/torrents && mkdir /home/data/incomplete && wget -O /etc/transmission-daemon/settings.json https://raw.githubusercontent.com/bugai66/downloads/master/settings_transmission
