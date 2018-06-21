@@ -1,28 +1,14 @@
-apt install qbittorrent-nox -y
-
-mcedit /etc/systemd/system/qbittorrent.service
-/////////////////////////////////////
-[Unit]
-Description=qBittorrent Daemon Service
-After=network.target
-
-[Service]
-User=root
-ExecStart=/usr/bin/qbittorrent-nox
-ExecStop=/usr/bin/killall -w qbittorrent-nox
-
-[Install]
-WantedBy=multi-user.target
-////////////////////////////////////////
-
-systemctl daemon-reload
-
-qbittorrent-nox
-qbittorrent-nox --webui-port=9000
-Ctrl-c
-
-Enable it to start up on boot:
-systemctl enable qbittorrent
+apt install qbittorrent-nox -y && 
+wget -O /etc/systemd/system/qbittorrent.service https://raw.githubusercontent.com/bugai66/downloads/master/qbitservice && 
+systemctl daemon-reload && 
+qbittorrent-nox --webui-port=9000 && 
+systemctl enable qbittorrent && 
+mkdir /home/data && mkdir /home/data/download && 
+mkdir /home/data/torrents && 
+mkdir /home/data/incomplete && 
+chmod -R 777 /home/data
 
 systemctl start qbittorrent
 systemctl stop qbittorrent
+
+apt install qbittorrent-nox -y && wget -O /etc/systemd/system/qbittorrent.service https://raw.githubusercontent.com/bugai66/downloads/master/qbitservice && systemctl daemon-reload && qbittorrent-nox --webui-port=9000 && systemctl enable qbittorrent && mkdir /home/data && mkdir /home/data/download && mkdir /home/data/torrents && mkdir /home/data/incomplete && chmod -R 777 /home/data
