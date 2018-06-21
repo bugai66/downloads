@@ -1,19 +1,42 @@
-curl -v --data "username=____&password=______" http://localhost:9000/login
+// ПОЛУЧАЕМ КУКИ
+curl -v --data "username=____&password=____" http://localhost:9000/login
 
+// ЛИСТ ТОРРЕНТОВ С ИХ ХЭШАМИ
 curl \
 -H 'User-Agent: Fiddler' \
--H 'Cookie: SID=QnRFXyTgS3KBI0/h67lIR+NwjULoqewp' \
+-H 'Cookie: SID=+ROyP4qr9kNb8wR0idq7JAtWyjeDd0Ck' \
 -X GET http://localhost:9000/query/torrents
 
 https://github.com/bugai66/downloads/raw/master/test1.torrent
 
-
+// ДОБАВЛЯЕМ ТОРРЕНТ
 curl -v \
 -H 'User-Agent: Fiddler' \
--H 'Cookie: SID=QnRFXyTgS3KBI0/h67lIR+NwjULoqewp' \
+-H 'Cookie: SID=+ROyP4qr9kNb8wR0idq7JAtWyjeDd0Ck' \
 -H "Content-Type: multipart/form-data" \
--F "urls=https://github.com/bugai66/downloads/raw/master/test1.torrent" \
+-F "urls=https://github.com/bugai66/downloads/raw/master/test2.torrent" \
 -F "savepath=/home/data/download/" \
 -F "paused=true" \
--F "rename=torent_166" \
 -X POST http://localhost:9000/command/download
+
+// НЕ ЗАГРУЖАЕМ ФАЙЛЫ
+curl -v \
+-H 'User-Agent: Fiddler' \
+-H 'Cookie: SID=+ROyP4qr9kNb8wR0idq7JAtWyjeDd0Ck' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d "hash=a64a8e085e28ab752dd0de626f807ab7a0dadb93&id=8&priority=0" \
+-X POST http://localhost:9000/command/setFilePrio
+
+// ЗАПУСКАЕМ ТОРРЕНТ
+curl -v \
+-H 'User-Agent: Fiddler' \
+-H 'Cookie: SID=+ROyP4qr9kNb8wR0idq7JAtWyjeDd0Ck' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d "hash=a64a8e085e28ab752dd0de626f807ab7a0dadb93" \
+-X POST http://localhost:9000/command/resume
+
+// ПОЛУЧАСЕМ ИНФУ ПО ТОРРЕНТУ
+curl -v \
+-H 'User-Agent: Fiddler' \
+-H 'Cookie: SID=+ROyP4qr9kNb8wR0idq7JAtWyjeDd0Ck' \
+-X GET http://localhost:9000/query/propertiesFiles/a64a8e085e28ab752dd0de626f807ab7a0dadb93
