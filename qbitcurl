@@ -1,0 +1,19 @@
+curl -v --data "username=____&password=______" http://localhost:9000/login
+
+curl \
+-H 'User-Agent: Fiddler' \
+-H 'Cookie: SID=QnRFXyTgS3KBI0/h67lIR+NwjULoqewp' \
+-X GET http://localhost:9000/query/torrents
+
+https://github.com/bugai66/downloads/raw/master/test1.torrent
+
+
+curl -v \
+-H 'User-Agent: Fiddler' \
+-H 'Cookie: SID=QnRFXyTgS3KBI0/h67lIR+NwjULoqewp' \
+-H "Content-Type: multipart/form-data" \
+-F "urls=https://github.com/bugai66/downloads/raw/master/test1.torrent" \
+-F "savepath=/home/data/download/" \
+-F "paused=true" \
+-F "rename=torent_166" \
+-X POST http://localhost:9000/command/download
