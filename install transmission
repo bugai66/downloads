@@ -24,3 +24,7 @@ systemctl disable transmission-daemon.service
 apt install transmission-remote-cli -y && transmission-remote-cli --create-config
 
 apt install php-{fpm,mbstring,mcrypt,mysql,zip,curl} -y
+
+// service transmission-daemon stop 
+// service transmission-daemon start
+// cd /etc/transmission-daemon/
