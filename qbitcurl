@@ -35,6 +35,22 @@ curl -v \
 -d "hash=a64a8e085e28ab752dd0de626f807ab7a0dadb93" \
 -X POST http://localhost:9000/command/resume
 
+// ПАУЗА ТОРРЕНТА
+curl -v \
+-H 'User-Agent: Fiddler' \
+-H 'Cookie: SID=+ROyP4qr9kNb8wR0idq7JAtWyjeDd0Ck' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d "hash=a64a8e085e28ab752dd0de626f807ab7a0dadb93" \
+-X POST http://localhost:9000/command/pause
+
+// УДАЛЕНИЕ ТОРРЕНТА С ИНФОЙ
+curl -v \
+-H 'User-Agent: Fiddler' \
+-H 'Cookie: SID=+ROyP4qr9kNb8wR0idq7JAtWyjeDd0Ck' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d "hash=a64a8e085e28ab752dd0de626f807ab7a0dadb93" \
+-X POST http://localhost:9000/command/deletePerm
+
 // ПОЛУЧАСЕМ ИНФУ ПО ТОРРЕНТУ
 curl -v \
 -H 'User-Agent: Fiddler' \
