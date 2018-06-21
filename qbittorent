@@ -18,6 +18,7 @@ WantedBy=multi-user.target
 systemctl daemon-reload
 
 qbittorrent-nox
+qbittorrent-nox --webui-port=9000
 Ctrl-c
 
 Enable it to start up on boot:
