@@ -1,135 +1,156 @@
 <?php
+// Login($login, $password)
+// Lists()
+// Download($url, $path, $pause)
+// Unwanted($hash, $id)
+// Resume($hash)
+// Pause($hash)
+// Delete_All($hash)
+
 /**
  * LOGIN
  */
-// $ch = curl_init();
-// curl_setopt($ch, CURLOPT_URL, 'localhost/login');
-// curl_setopt($ch, CURLOPT_PORT, 9000);
-// curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
-// curl_setopt($ch, CURLOPT_POST, 1);
-// curl_setopt($ch, CURLOPT_COOKIEJAR, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_POSTFIELDS, "username=root&password=root13");
-// $result = curl_exec($ch);
-// curl_close($ch);
+function Login($login, $password) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'localhost/login');
+    curl_setopt($ch, CURLOPT_PORT, 9000);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_COOKIEJAR, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "username=$login&password=$password");
+    $result = curl_exec($ch);
+    curl_close($ch);
+}
 
 
 /**
  * TORRENT LIST
  */
-// $ch = curl_init();
-// curl_setopt($ch, CURLOPT_URL, 'localhost/query/torrents');
-// curl_setopt($ch, CURLOPT_HTTPGET, true);
-// curl_setopt($ch, CURLOPT_PORT, 9000);
-// curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
-// curl_setopt($ch, CURLOPT_COOKIEFILE, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_COOKIEJAR, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// $result = curl_exec($ch);
-// curl_close($ch);
-// print_r(json_decode($result, true));
+function Lists() {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'localhost/query/torrents');
+    curl_setopt($ch, CURLOPT_HTTPGET, true);
+    curl_setopt($ch, CURLOPT_PORT, 9000);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_COOKIEJAR, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    print_r(json_decode($result, true));
+}
 
 
 /**
  * DOWNLOAD TORRENT
  */
-// $ch = curl_init();
-// curl_setopt($ch, CURLOPT_HEADER, 1);
-// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data'));
-// curl_setopt($ch, CURLOPT_URL, 'localhost/command/download');
-// curl_setopt($ch, CURLOPT_PORT, 9000);
-// curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
-// curl_setopt($ch, CURLOPT_POST, true);
-// curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-//     "urls" => "https://github.com/bugai66/downloads/raw/master/test4.torrent",
-//     "savepath" => "/home/data/download/",
-//     "paused" => "true"
-//     ));
-// curl_setopt($ch, CURLOPT_COOKIEFILE, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_COOKIEJAR, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// $result = curl_exec($ch);
-// curl_close($ch);
+function Download($url, $path, $pause) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'localhost/command/download');
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data'));
+    curl_setopt($ch, CURLOPT_PORT, 9000);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+        "urls" => "$url",
+        "savepath" => "$path",
+        "paused" => "$pause"
+        ));
+    curl_setopt($ch, CURLOPT_COOKIEFILE, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_COOKIEJAR, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $result = curl_exec($ch);
+    curl_close($ch);
+}
 
 
 /**
  * UNWANTED FILES
  */
-// $ch = curl_init();
-// curl_setopt($ch, CURLOPT_HEADER, 1);
-// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
-// curl_setopt($ch, CURLOPT_URL, 'localhost/command/setFilePrio');
-// curl_setopt($ch, CURLOPT_PORT, 9000);
-// curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
-// curl_setopt($ch, CURLOPT_POST, true);
-// curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-//     "hash" => "a64a8e085e28ab752dd0de626f807ab7a0dadb93",
-//     "id" => "8",
-//     "priority" => "0"
-//     ));
-// curl_setopt($ch, CURLOPT_COOKIEFILE, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_COOKIEJAR, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// $result = curl_exec($ch);
-// curl_close($ch);
+function Unwanted($hash, $id) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'localhost/command/setFilePrio');
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+    curl_setopt($ch, CURLOPT_PORT, 9000);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+        "hash" => "$hash",
+        "id" => "$id",
+        "priority" => "0"
+        ));
+    curl_setopt($ch, CURLOPT_COOKIEFILE, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_COOKIEJAR, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $result = curl_exec($ch);
+    curl_close($ch);
+}
 
 
 /**
  * START TORRENT
  */
-// $ch = curl_init();
-// curl_setopt($ch, CURLOPT_HEADER, 1);
-// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
-// curl_setopt($ch, CURLOPT_URL, 'localhost/command/resume');
-// curl_setopt($ch, CURLOPT_PORT, 9000);
-// curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
-// curl_setopt($ch, CURLOPT_POST, true);
-// curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-//     "hash" => "a64a8e085e28ab752dd0de626f807ab7a0dadb93"
-//     ));
-// curl_setopt($ch, CURLOPT_COOKIEFILE, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_COOKIEJAR, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// $result = curl_exec($ch);
-// curl_close($ch);
+function Resume($hash) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'localhost/command/resume');
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+    curl_setopt($ch, CURLOPT_PORT, 9000);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+        "hash" => "$hash"
+        ));
+    curl_setopt($ch, CURLOPT_COOKIEFILE, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_COOKIEJAR, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $result = curl_exec($ch);
+    curl_close($ch);
+}
 
 
 /**
  * PAUSE TORRENT
  */
-// $ch = curl_init();
-// curl_setopt($ch, CURLOPT_HEADER, 1);
-// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
-// curl_setopt($ch, CURLOPT_URL, 'localhost/command/pause');
-// curl_setopt($ch, CURLOPT_PORT, 9000);
-// curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
-// curl_setopt($ch, CURLOPT_POST, true);
-// curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-//     "hash" => "a64a8e085e28ab752dd0de626f807ab7a0dadb93"
-//     ));
-// curl_setopt($ch, CURLOPT_COOKIEFILE, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_COOKIEJAR, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// $result = curl_exec($ch);
-// curl_close($ch);
+function Pause($hash) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'localhost/command/pause');
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+    curl_setopt($ch, CURLOPT_PORT, 9000);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+        "hash" => "$hash"
+        ));
+    curl_setopt($ch, CURLOPT_COOKIEFILE, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_COOKIEJAR, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $result = curl_exec($ch);
+    curl_close($ch);
+}
 
 
 /**
  * DELETE TORRENT AND DATA
  */
-// $ch = curl_init();
-// curl_setopt($ch, CURLOPT_HEADER, 1);
-// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
-// curl_setopt($ch, CURLOPT_URL, 'localhost/command/deletePerm');
-// curl_setopt($ch, CURLOPT_PORT, 9000);
-// curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
-// curl_setopt($ch, CURLOPT_POST, true);
-// curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-//     "hash" => "a64a8e085e28ab752dd0de626f807ab7a0dadb93"
-//     ));
-// curl_setopt($ch, CURLOPT_COOKIEFILE, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_COOKIEJAR, 'D:\SERVER\k\www\ttt.txt');
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// $result = curl_exec($ch);
-// curl_close($ch);
-
+function Delete_All($hash) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'localhost/command/deletePerm');
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+    curl_setopt($ch, CURLOPT_PORT, 9000);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Fiddler');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+        "hash" => "$hash"
+        ));
+    curl_setopt($ch, CURLOPT_COOKIEFILE, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_COOKIEJAR, __DIR__."/cookie");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $result = curl_exec($ch);
+    curl_close($ch);
+}
 ?>
