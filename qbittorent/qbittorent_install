@@ -11,11 +11,4 @@ chmod -R 777 /home/data
 systemctl start qbittorrent
 systemctl stop qbittorrent
 
-php /home/create.php "%N" "%I"
-
 apt install qbittorrent-nox -y && wget -O /etc/systemd/system/qbittorrent.service https://raw.githubusercontent.com/bugai66/downloads/master/qbitservice && systemctl daemon-reload && qbittorrent-nox --webui-port=9000 && systemctl enable qbittorrent && mkdir /home/data && mkdir /home/data/download && mkdir /home/data/torrents && mkdir /home/data/incomplete && chmod -R 777 /home/data
-
-apt install php-{fpm,mbstring,mysql,zip,curl} -y
-
-
-
