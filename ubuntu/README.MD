@@ -16,3 +16,4 @@ service ssh restart
 add-apt-repository ppa:linuxuprising/java
 apt update
 apt install oracle-java10-installer -y
+```
