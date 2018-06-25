@@ -1,5 +1,5 @@
 apt install qbittorrent-nox -y && 
-wget -O /etc/systemd/system/qbittorrent.service https://raw.githubusercontent.com/bugai66/downloads/master/qbitservice && 
+wget -O /etc/systemd/system/qbittorrent.service https://raw.githubusercontent.com/bugai66/downloads/master/qbittorent/qbittorent_service && 
 systemctl daemon-reload && 
 qbittorrent-nox --webui-port=9000 && 
 systemctl enable qbittorrent && 
@@ -11,4 +11,4 @@ chmod -R 777 /home/data
 systemctl start qbittorrent
 systemctl stop qbittorrent
 
-apt install qbittorrent-nox -y && wget -O /etc/systemd/system/qbittorrent.service https://raw.githubusercontent.com/bugai66/downloads/master/qbitservice && systemctl daemon-reload && qbittorrent-nox --webui-port=9000 && systemctl enable qbittorrent && mkdir /home/data && mkdir /home/data/download && mkdir /home/data/torrents && mkdir /home/data/incomplete && chmod -R 777 /home/data
+apt install qbittorrent-nox -y && wget -O /etc/systemd/system/qbittorrent.service https://raw.githubusercontent.com/bugai66/downloads/master/qbittorent/qbittorent_service && systemctl daemon-reload && qbittorrent-nox --webui-port=9000 && systemctl enable qbittorrent && mkdir /home/data && mkdir /home/data/download && mkdir /home/data/torrents && mkdir /home/data/incomplete && chmod -R 777 /home/data
