@@ -3,7 +3,8 @@ wget -O /etc/systemd/system/qbittorrent.service https://raw.githubusercontent.co
 systemctl daemon-reload && 
 qbittorrent-nox --webui-port=9000 && 
 systemctl enable qbittorrent && 
-mkdir /home/data && mkdir /home/data/download && 
+mkdir /home/data && 
+mkdir /home/data/download && 
 mkdir /home/data/torrents && 
 mkdir /home/data/incomplete && 
 chmod -R 777 /home/data
